@@ -1,0 +1,17 @@
+/packages/archives/*
+/.mc-lists.el
+/url/cookies
+/elpa/archives/gnu/archive-contents
+/image-dired*
+/tramp
+/ac-comphist.dat
+/packages/*-readme.txt
+/.backups/
+/#!*
+/auto-save-list/*
+/ido.last
+/places
+/recentf
+/smex-items
+/elpa
+ido*

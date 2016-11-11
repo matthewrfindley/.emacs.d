@@ -1,0 +1,12 @@
+./b#+STARTUP: showeverything
+
+* Setup
+** Clone: https://github.com/re5et/.emacs.d-for-my-friends.git to your home directory
+
+  #+BEGIN_SRC shell-script
+    mv ~/.emacs.d ~/.emacs.d.backup
+    git clone https://github.com/re5et/.emacs.d-for-my-friends.git ~/.emacs.d
+  #+END_SRC
+
+** Start emacs
+   you should be presented with this README and you can continue from there.
