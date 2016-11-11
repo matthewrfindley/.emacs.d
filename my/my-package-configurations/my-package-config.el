@@ -6,6 +6,7 @@
  'require
  '(magit-config
    dired-efap-config
+   flycheck-config
    smex-config
    wgrep-config
    simp-config
@@ -15,7 +16,7 @@
    my-theme-config
    company-config
    web-mode-config
-   flycheck-config
+   sass-mode-config
    move-dup-config
    ))
 

@@ -2,7 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
