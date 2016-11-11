@@ -23,6 +23,5 @@
   (mapc
    'require
    '(my-keybindings
-     my-mac-support
      ))))
 ;;; init.el ends here
