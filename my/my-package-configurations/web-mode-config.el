@@ -11,6 +11,7 @@
     (aj-javascript/set-prettier-command)
     (set-node-modules-path)
     (flycheck-mode)
+    (company-mode)
     (custom-set-variables
      ''(local-unset-key (kbd "M-j"))
      '(web-mode-content-types-alist

@@ -56,6 +56,7 @@
 
 (use-package rubocop
   :ensure t
+  :defer t
   :init
   (progn
     (add-hook 'ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
@@ -65,6 +66,7 @@
 
 (use-package eslintd-fix
   :ensure t
+  :defer t
   :init
   (progn
     (add-hook 'web-mode-hook 'eslintd-fix-mode)))
@@ -80,6 +82,21 @@
 (with-eval-after-load 'flycheck
   (advice-add 'flycheck-checker-substituted-arguments :around
               'aj-javascript//flycheck-eslint-disable-prettier))
+
+(use-package flow-minor-mode
+  :defer t
+  :ensure t
+  :init
+  (progn
+    (add-hook 'web-mode-hook 'flow-minor-enable-automatically)))
+
+(use-package flycheck-flow
+  :ensure t
+  :config
+  (progn
+    (with-eval-after-load 'flycheck
+      (flycheck-add-mode 'javascript-flow 'web-mode)
+      (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))))
 
 (provide 'my-package-config)
 ;;; my-package-config.el ends here
