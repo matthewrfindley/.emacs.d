@@ -6,7 +6,9 @@
   :config
   (defun my-web-mode-hook ()
     (linum-mode)
-    (eslint-set-closest-executable)
+    (aj-javascript/set-eslint-executable)
+    (aj-javascript/set-flow-executable)
+    (aj-javascript/set-prettier-command)
     (set-node-modules-path)
     (flycheck-mode)
     (custom-set-variables
