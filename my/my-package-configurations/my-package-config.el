@@ -63,5 +63,23 @@
     (add-hook 'ruby-mode-hook #'rubocop-mode)
     (add-hook 'enh-ruby-mode-hook #'rubocop-mode)))
 
+(use-package eslintd-fix
+  :ensure t
+  :init
+  (progn
+    (add-hook 'web-mode-hook 'eslintd-fix-mode)))
+
+;; eslintd-fix will fix any prettier errors so we don't want to see them in
+;; flycheck
+(defun aj-javascript//flycheck-eslint-disable-prettier (oldfun checker &rest args)
+  (let ((arguments (apply oldfun checker args)))
+    (if (eq checker 'javascript-eslint)
+        (cons "--rule=prettier/prettier:off" arguments)
+      arguments)))
+
+(with-eval-after-load 'flycheck
+  (advice-add 'flycheck-checker-substituted-arguments :around
+              'aj-javascript//flycheck-eslint-disable-prettier))
+
 (provide 'my-package-config)
 ;;; my-package-config.el ends here
