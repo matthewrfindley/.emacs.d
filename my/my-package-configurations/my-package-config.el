@@ -26,6 +26,15 @@
   (when-let* ((executable (aj-javascript//locate-npm-executable "prettier")))
     (setq-local prettier-js-command executable)))
 
+(defun aj-ruby/rubocop-set-flycheck-executable ()
+  (interactive)
+  (let* ((dir (locate-dominating-file buffer-file-name "bin/rubocop"))
+         (executable (if dir
+                         (concat dir "bin/rubocop")
+                       (executable-find "rubocop"))))
+    (when executable
+      (setq-local flycheck-ruby-rubocop-executable executable))))
+
 (mapc
  'require
  '(magit-config
@@ -44,6 +53,15 @@
    move-dup-config
    ruby-test-mode-config
    ))
+
+(use-package rubocop
+  :ensure t
+  :init
+  (progn
+    (add-hook 'ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
+    (add-hook 'enh-ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
+    (add-hook 'ruby-mode-hook #'rubocop-mode)
+    (add-hook 'enh-ruby-mode-hook #'rubocop-mode)))
 
 (provide 'my-package-config)
 ;;; my-package-config.el ends here
