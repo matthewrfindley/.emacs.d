@@ -10,7 +10,7 @@
    smex-config
    wgrep-config
    simp-config
-   ido-ubiquitous-config
+   ido-completing-read+-config
    multiple-cursors-config
    multi-term-config
    my-theme-config
@@ -18,6 +18,7 @@
    web-mode-config
    sass-mode-config
    move-dup-config
+   ruby-test-mode-config
    ))
 
 (provide 'my-package-config)
