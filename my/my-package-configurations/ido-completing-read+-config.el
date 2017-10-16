@@ -9,5 +9,5 @@
    '(ido-everywhere 1))
   )
 
-(provide 'ido-completing-read+)
+(provide 'ido-completing-read+-config)
 ;;; ido-completing-read+-config.el ends here
