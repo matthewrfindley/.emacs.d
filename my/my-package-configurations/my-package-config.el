@@ -98,5 +98,21 @@
       (flycheck-add-mode 'javascript-flow 'web-mode)
       (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))))
 
+(use-package flycheck-popup-tip
+    :ensure t
+    :defer t
+    :init
+    (progn
+      (setq flycheck-popup-tip-error-prefix "* ")
+      (add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)))
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 (provide 'my-package-config)
 ;;; my-package-config.el ends here
