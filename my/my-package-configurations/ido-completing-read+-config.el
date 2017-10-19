@@ -4,9 +4,10 @@
 (use-package ido-completing-read+
   :ensure t
   :config
-  (custom-set-variables
-   '(ido-mode 1)
-   '(ido-everywhere 1))
+  (progn
+   (ido-mode 1)
+   (ido-everywhere 1)
+   (ido-ubiquitous-mode 1))
   )
 
 (provide 'ido-completing-read+-config)
