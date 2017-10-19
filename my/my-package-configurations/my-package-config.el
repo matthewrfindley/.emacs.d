@@ -11,19 +11,25 @@
 
 (defun aj-javascript/set-eslint-executable ()
   (interactive)
-  (when-let* ((executable (aj-javascript//locate-npm-executable "eslint_d")))
+  (when-let ((executable (aj-javascript//locate-npm-executable "eslint_d")))
     (setq-local flycheck-javascript-eslint-executable executable)))
 
 (defun aj-javascript/set-flow-executable ()
   (interactive)
-  (when-let* ((executable (aj-javascript//locate-npm-executable "flow")))
+  (let* ((os (pcase system-type
+               ('darwin "osx")
+               ('gnu/linux "linux64")
+               (_ nil)))
+         (root (locate-dominating-file  buffer-file-name  "node_modules/flow-bin"))
+         (executable (car (file-expand-wildcards
+                          (concat root "node_modules/flow-bin/*" os "*/flow")))))
     (setq-local flow-minor-default-binary executable)
     (setq-local company-flow-executable executable)
     (setq-local flycheck-javascript-flow-executable executable)))
 
 (defun aj-javascript/set-prettier-command ()
   (interactive)
-  (when-let* ((executable (aj-javascript//locate-npm-executable "prettier")))
+  (when-let ((executable (aj-javascript//locate-npm-executable "prettier")))
     (setq-local prettier-js-command executable)))
 
 (defun aj-ruby/rubocop-set-flycheck-executable ()
