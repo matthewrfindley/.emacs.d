@@ -4,7 +4,7 @@
 
 (custom-set-variables
  ;; Custom
- '(custom-file "~/my-package-customizations.el")
+ '(custom-file "./my-customize-variables.el")
 
  ;; No startup screen
  '(inhibit-startup-message t)
