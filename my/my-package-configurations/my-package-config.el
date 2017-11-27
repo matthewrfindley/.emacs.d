@@ -12,7 +12,8 @@
 (defun aj-javascript/set-eslint-executable ()
   (interactive)
   (when-let ((executable (aj-javascript//locate-npm-executable "eslint_d")))
-    (setq-local flycheck-javascript-eslint-executable executable)))
+    (setq-local flycheck-javascript-eslint-executable executable)
+    (setq-local eslintd-fix-executable executable)))
 
 (defun aj-javascript/set-flow-executable ()
   (interactive)
@@ -119,6 +120,11 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+
+
+(use-package rainbow-mode
+  :ensure t
+  )
 
 (provide 'my-package-config)
 ;;; my-package-config.el ends here
