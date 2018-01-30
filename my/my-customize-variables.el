@@ -6,7 +6,7 @@
  '(bookmark-default-file "~/.emacs.d/my/my-bookmarks.el")
  '(company-dabbrev-downcase nil)
  '(company-idle-delay 0.1)
- '(custom-file "~/my-package-customizations.el")
+ '(custom-file "~/.emacs.d/my-customize-variables.el")
  '(custom-safe-themes
    (quote
     ("fa6756e5e858f170efd082c599fc348ced3b2283a624efedac9162bcc45eea80" default)))
@@ -28,6 +28,9 @@
  '(magit-completing-read-function (quote ido-completing-read))
  '(magit-save-repository-buffers nil)
  '(magit-set-upstream-on-push (quote askifnotset))
+ '(package-selected-packages
+   (quote
+    (wgrep web-mode use-package smex simp sass-mode ruby-test-mode rubocop rainbow-mode projectile multiple-cursors multi-term move-dup markdown-preview-mode magit ido-completing-read+ flycheck-popup-tip flycheck-flow flow-minor-mode eslintd-fix dired-efap darcula-theme company-flow)))
  '(quote (local-unset-key (kbd "M-j")))
  '(recentf-save-file (expand-file-name ".recentf" temporary-file-directory))
  '(require-final-newline (quote visit-save))
