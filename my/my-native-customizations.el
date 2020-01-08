@@ -4,7 +4,7 @@
 
 (custom-set-variables
  ;; Custom
- '(custom-file "./my-customize-variables.el")
+ '(custom-file "~/.emacs.d/my/my-customize-variables.el")
 
  ;; No startup screen
  '(inhibit-startup-message t)

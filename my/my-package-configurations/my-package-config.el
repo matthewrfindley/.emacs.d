@@ -15,19 +15,6 @@
     (setq-local flycheck-javascript-eslint-executable executable)
     (setq-local eslintd-fix-executable executable)))
 
-(defun aj-javascript/set-flow-executable ()
-  (interactive)
-  (let* ((os (pcase system-type
-               ('darwin "osx")
-               ('gnu/linux "linux64")
-               (_ nil)))
-         (root (locate-dominating-file  buffer-file-name  "node_modules/flow-bin"))
-         (executable (car (file-expand-wildcards
-                          (concat root "node_modules/flow-bin/*" os "*/flow")))))
-    (setq-local flow-minor-default-binary executable)
-    (setq-local company-flow-executable executable)
-    (setq-local flycheck-javascript-flow-executable executable)))
-
 (defun aj-javascript/set-prettier-command ()
   (interactive)
   (when-let ((executable (aj-javascript//locate-npm-executable "prettier")))
@@ -90,21 +77,6 @@
   (advice-add 'flycheck-checker-substituted-arguments :around
               'aj-javascript//flycheck-eslint-disable-prettier))
 
-(use-package flow-minor-mode
-  :defer t
-  :ensure t
-  :init
-  (progn
-    (add-hook 'web-mode-hook 'flow-minor-enable-automatically)))
-
-(use-package flycheck-flow
-  :ensure t
-  :config
-  (progn
-    (with-eval-after-load 'flycheck
-      (flycheck-add-mode 'javascript-flow 'web-mode)
-      (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))))
-
 (use-package flycheck-popup-tip
     :ensure t
     :defer t
@@ -119,12 +91,60 @@
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
+  :config
+  (defun my-markdown-hook ()
+    (linum-mode 1)
+    (aj-javascript/set-eslint-executable)
+    (aj-javascript/set-prettier-command)
+    (prettier-js-mode 1))
+  (add-hook
+   'markdown-mode-hook 'my-markdown-hook)
   :init (setq markdown-command "multimarkdown"))
 
 
 (use-package rainbow-mode
   :ensure t
   )
+
+ (use-package go-mode
+    :ensure t
+    :mode "\\*\\.go"
+    :config
+    (add-hook 'before-save-hook 'gofmt-before-save)
+    (add-hook 'go-mode-hook
+              (lambda ()
+                (linum-mode)))
+    (use-package go-eldoc
+      :ensure t
+      :config
+      (add-hook 'go-mode-hook 'go-eldoc-setup))
+
+    (use-package godoctor
+      :ensure t)
+
+    (use-package go-guru
+      :ensure t))
+
+
+(add-hook
+ 'typescript-mode-hook
+ (lambda ()
+   (aj-javascript/set-prettier-command)
+   (prettier-js-mode 1)
+   (flycheck-mode 1)
+   (tide-setup)
+   (eldoc-mode 1)
+   ))
+
+(add-hook
+ 'typescript-tsx-mode-hook
+ (lambda ()
+   (aj-javascript/set-prettier-command)
+   (prettier-js-mode 1)
+   (tide-setup)
+   (fly-checkmode 1)
+   (eldoc-mode 1)
+   ))
 
 (provide 'my-package-config)
 ;;; my-package-config.el ends here

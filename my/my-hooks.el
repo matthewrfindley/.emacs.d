@@ -10,5 +10,6 @@
    (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
    (define-key dired-mode-map (kbd "e") 'dired-efap)))
 
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 (provide 'my-hooks)

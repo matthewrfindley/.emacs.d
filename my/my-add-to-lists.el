@@ -12,6 +12,7 @@
 ;; WEB MODE
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 
 (provide 'my-add-to-lists)
 ;;; my-add-to-lists ends here
