@@ -9,12 +9,6 @@
         (concat dir node-module-path)
       (executable-find name))))
 
-(defun aj-javascript/set-eslint-executable ()
-  (interactive)
-  (when-let ((executable (aj-javascript//locate-npm-executable "eslint_d")))
-    (setq-local flycheck-javascript-eslint-executable executable)
-    (setq-local eslintd-fix-executable executable)))
-
 (defun aj-javascript/set-prettier-command ()
   (interactive)
   (when-let ((executable (aj-javascript//locate-npm-executable "prettier")))
@@ -46,36 +40,35 @@
    sass-mode-config
    move-dup-config
    ruby-test-mode-config
+   ruby-mode-config
    ))
 
-(use-package rubocop
-  :ensure t
-  :defer t
-  :init
-  (progn
-    (add-hook 'ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
-    (add-hook 'enh-ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
-    (add-hook 'ruby-mode-hook #'rubocop-mode)
-    (add-hook 'enh-ruby-mode-hook #'rubocop-mode)))
+;; (use-package rubocop
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   (progn
+;;     (add-hook 'ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
+;;     (add-hook 'enh-ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
+;;     (add-hook 'ruby-mode-hook #'rubocop-mode)
+;;     (add-hook 'enh-ruby-mode-hook #'rubocop-mode)))
 
-(use-package eslintd-fix
+
+(use-package prettier
   :ensure t
-  :defer t
-  :init
-  (progn
-    (add-hook 'web-mode-hook 'eslintd-fix-mode)))
+  :hook ((web-mode . prettier-mode)))
 
 ;; eslintd-fix will fix any prettier errors so we don't want to see them in
 ;; flycheck
-(defun aj-javascript//flycheck-eslint-disable-prettier (oldfun checker &rest args)
-  (let ((arguments (apply oldfun checker args)))
-    (if (eq checker 'javascript-eslint)
-        (cons "--rule=prettier/prettier:off" arguments)
-      arguments)))
+;; (defun aj-javascript//flycheck-eslint-disable-prettier (oldfun checker &rest args)
+;;   (let ((arguments (apply oldfun checker args)))
+;;     (if (eq checker 'javascript-eslint)
+;;         (cons "--rule=prettier/prettier:off" arguments)
+;;       arguments)))
 
-(with-eval-after-load 'flycheck
-  (advice-add 'flycheck-checker-substituted-arguments :around
-              'aj-javascript//flycheck-eslint-disable-prettier))
+;; (with-eval-after-load 'flycheck
+;;   (advice-add 'flycheck-checker-substituted-arguments :around
+;;              'aj-javascript//flycheck-eslint-disable-prettier))
 
 (use-package flycheck-popup-tip
     :ensure t
@@ -94,9 +87,9 @@
   :config
   (defun my-markdown-hook ()
     (linum-mode 1)
-    (aj-javascript/set-eslint-executable)
     (aj-javascript/set-prettier-command)
-    (prettier-js-mode 1))
+    (prettier-mode 1)
+    )
   (add-hook
    'markdown-mode-hook 'my-markdown-hook)
   :init (setq markdown-command "multimarkdown"))
@@ -130,7 +123,7 @@
  'typescript-mode-hook
  (lambda ()
    (aj-javascript/set-prettier-command)
-   (prettier-js-mode 1)
+   (prettier-mode 1)
    (flycheck-mode 1)
    (tide-setup)
    (eldoc-mode 1)
@@ -145,6 +138,17 @@
    (fly-checkmode 1)
    (eldoc-mode 1)
    ))
+
+(use-package speeddating
+  :config
+  ;; Tue Nov 02 2021
+  (add-to-list 'speeddating-formats "%a %b %d %Y")
+
+  ;; Tue, 2 Nov 2021
+  (add-to-list 'speeddating-formats "%a, %-d %b %Y")
+
+  ;; 2021-11-02 Tue
+  (add-to-list 'speeddating-formats "%Y-%m-%d %a"))
 
 (provide 'my-package-config)
 ;;; my-package-config.el ends here

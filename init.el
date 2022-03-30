@@ -1,7 +1,7 @@
 ;;; init.el --- Summary
 ;;; Commentary:
 ;;; Code:
-(package-initialize)
+;;;(package-initialize)
 
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))

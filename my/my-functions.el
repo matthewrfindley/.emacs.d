@@ -83,16 +83,16 @@ to the location of the selected bookmark."
     (setq-local exec-path (add-to-list 'exec-path node-path))))
 
 ;; ESLINT
-(defun eslint-set-closest-executable (&optional dir)
-  (interactive)
-  (let* ((dir (or dir default-directory))
-         (eslint-executable (concat dir "/node_modules/.bin/eslint")))
-    (if (file-exists-p eslint-executable)
-        (progn
-          (make-variable-buffer-local 'flycheck-javascript-eslint-executable)
-          (setq flycheck-javascript-eslint-executable eslint-executable))
-      (if (string= dir "/") nil
-        (eslint-set-closest-executable (expand-file-name ".." dir))))))
+;; (defun eslint-set-closest-executable (&optional dir)
+;;   (interactive)
+;;   (let* ((dir (or dir default-directory))
+;;          (eslint-executable (concat dir "/node_modules/.bin/eslint")))
+;;     (if (file-exists-p eslint-executable)
+;;         (progn
+;;           (make-variable-buffer-local 'flycheck-javascript-eslint-executable)
+;;           (setq flycheck-javascript-eslint-executable eslint-executable))
+;;       (if (string= dir "/") nil
+;;         (eslint-set-closest-executable (expand-file-name ".." dir))))))
 
 (defun indent-buffer ()
   "Fix indentation on the entire buffer."
@@ -100,14 +100,99 @@ to the location of the selected bookmark."
   (save-excursion
     (indent-region (point-min) (point-max))))
 
-  (defun jc/go-guru-set-current-package-as-main ()
-    "GoGuru requires the scope to be set to a go package which
+(defun jc/go-guru-set-current-package-as-main ()
+  "GoGuru requires the scope to be set to a go package which
      contains a main, this function will make the current package the
      active go guru scope, assuming it contains a main"
+  (interactive)
+  (let* ((filename (buffer-file-name))
+         (gopath-src-path (concat (file-name-as-directory (go-guess-gopath)) "src"))
+         (relative-package-path (directory-file-name (file-name-directory (file-relative-name filename gopath-src-path)))))
+    (setq go-guru-scope relative-package-path)))
+
+(setq aj-fixed-font-default-size 14)
+(defun aj/frame-font-size-increase ()
+  "Increase the font size of the entire frame."
+  (interactive)
+  (aj/frame-font-size-change '1+))
+(defun aj/frame-font-size-decrease ()
+  "Decrease the font size of the entire frame."
+  (interactive)
+  (aj/frame-font-size-change '1-))
+(defun aj/frame-font-size-reset ()
+  "Decrease the font size of the entire frame."
+  (interactive)
+  (aj/frame-font-size-change (lambda (_x) aj-fixed-font-default-size)))
+ (defun presentation-mode ()
+    "Increase the font size for presentation."
     (interactive)
-    (let* ((filename (buffer-file-name))
-           (gopath-src-path (concat (file-name-as-directory (go-guess-gopath)) "src"))
-           (relative-package-path (directory-file-name (file-name-directory (file-relative-name filename gopath-src-path)))))
-      (setq go-guru-scope relative-package-path)))
+    (aj/frame-font-size-change (lambda (x)
+                                 (if (eq x 21)
+                                     aj-fixed-font-default-size
+                                   21))))
+  (defun aj/frame-font-size-change (fn)
+    "Change the font size of the frame."
+    (let* ((current-font-name (frame-parameter nil 'font))
+           (decomposed-font-name (x-decompose-font-name current-font-name))
+           (font-size (string-to-number (aref decomposed-font-name 5))))
+      (aset decomposed-font-name 5 (int-to-string (funcall fn font-size)))
+      (set-frame-font (x-compose-font-name decomposed-font-name))))
+
+
+(defun aj/xml-format ()
+  "Format XML using xmllint"
+  (interactive)
+  (shell-command-on-region (point-min) (point-max) "xmllint --format -" t t "*xmllint error*" t))
+
+;; (defun aj/eval-ruby ()
+;;   "Eval the current ruby file."
+;;   (interactive)
+;;   (when (buffer-file-name)
+;;     (let ((default-directory (projectile-project-root))
+;;           (process-environment (cons "RUBYOPT='-W:no-deprecated -W:no-experimental'" process-environment))
+;;           (command (format "ruby %s" (buffer-file-name)))
+;;           (compilation-scroll-output t)
+;;           (comint-prompt-read-only t))
+;;       (compilation-start command t))))
+;; (add-hook 'ruby-mode-hook
+;;           (map! :localleader
+;;                 :map ruby-mode-map
+;;                 :prefix ("e" . "eval")
+;;                 "e" #'aj/eval-ruby))
+
+;; (defun goto-matching-ruby-block (arg)
+;;   (cond   ;; are we at an end keyword?
+;;    ((equal (current-word) "end")    (ruby-beginning-of-block))   ;; or are we at a keyword itself?
+;;    ((string-match (current-word) "\\(for\\|while\\|until\\|if\\|class\\|module\\|case\\|unless\\|def\\|begin\\|do\\)")
+;;     (ruby-end-of-block)
+;;     )   )  )
+
+(defun aj/rename-current-file (newname)
+    "Rename file visited by current buffer to NEWNAME.
+Interactively, prompt the user for the target filename, with
+completion.
+If NEWNAME is a directory then extend it with the basename of
+`buffer-file-name'. Make parent directories automatically."
+    (interactive
+     (progn
+       (unless buffer-file-name
+         (user-error "Current buffer is not visiting a file"))
+       (let ((newname (read-file-name "Rename to: " nil buffer-file-name)))
+         (when (equal (file-truename newname)
+                      (file-truename buffer-file-name))
+           (user-error "%s" "Can't rename a file to itself"))
+         (list newname))))
+    (unless buffer-file-name
+      (error "Current buffer is not visiting a file"))
+    (when (equal (file-truename newname)
+                 (file-truename buffer-file-name))
+      (error "%s: %s" "Can't rename a file to itself" newname))
+    (when (equal newname (file-name-as-directory newname))
+      (setq newname
+            (concat newname (file-name-nondirectory buffer-file-name))))
+    (make-directory (file-name-directory newname) 'parents)
+    ;; Passing integer as OK-IF-ALREADY-EXISTS means prompt for
+    ;; confirmation before overwriting. Why? Who can say...
+    (dired-rename-file buffer-file-name newname 0))
 
 (provide 'my-functions)

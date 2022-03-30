@@ -6,15 +6,14 @@
   :config
   (defun my-web-mode-hook ()
     (linum-mode)
-    (aj-javascript/set-eslint-executable)
+    ;;;(aj-javascript/set-eslint-executable)
     (aj-javascript/set-prettier-command)
     (set-node-modules-path)
     (flycheck-add-mode 'typescript-tide 'web-mode)
-    (flycheck-add-mode 'javascript-eslint 'web-mode)
     (flycheck-mode)
     (company-mode)
     (tide-mode)
-    (prettier-js-mode)
+    (prettier-mode)
     (custom-set-variables
      ''(local-unset-key (kbd "M-j"))
      '(web-mode-content-types-alist
@@ -42,11 +41,8 @@
  'typescript-tsx-mode-hook
  (lambda ()
    (flycheck-add-mode 'typescript-tide 'typescript-tsx-mode)
-   (flycheck-add-mode 'javascript-eslint 'typescript-tsx-mode)
    (tide-setup)
-   (aj-javascript/set-eslint-executable)
    (aj-javascript/set-prettier-command)
-   (prettier-js-mode 1)
    (flycheck-mode 1)
    (eldoc-mode 1)
    ))

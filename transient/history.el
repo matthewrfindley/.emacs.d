@@ -2,11 +2,14 @@
   ("-w"))
  (magit-branch nil)
  (magit-cherry-pick
-  ("--ff"))
+  ("--ff")
+  nil)
  (magit-commit nil
+               ("--allow-empty")
                ("--no-verify"))
  (magit-diff
   ("--no-ext-diff" "--stat"))
+ (magit-dispatch nil)
  (magit-fetch nil)
  (magit-gitignore nil)
  (magit-log
@@ -15,11 +18,18 @@
  (magit-push nil
              ("--force-with-lease"))
  (magit-rebase nil
-               ("--interactive"))
+               ("--interactive")
+               ("--preserve-merges"))
+ (magit-remote
+  ("-f"))
+ (magit-remote\.<remote>\.*url "git@github.com:wsgr/p2-api.git" "git@github.com:wsgr/p2_api.git")
+ (magit-reset nil)
  (magit-revert
   ("--edit"))
+ (magit-run nil)
  (magit-show-refs nil)
  (magit-stash nil
               ("--all")
               ("--include-untracked"))
+ (magit-submodule nil)
  (magit-tag nil))

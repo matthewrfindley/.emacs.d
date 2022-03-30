@@ -11,6 +11,8 @@
 (global-set-key (kbd "C-x j") 'next-error)
 (global-set-key (kbd "\'") 'insert-pair)
 (global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "M-+") 'aj/frame-font-size-increase)
+(global-set-key (kbd "M--") 'aj/frame-font-size-decrease)
 
 ;; (old meta-x)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
