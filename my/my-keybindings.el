@@ -3,10 +3,10 @@
 ;;; Code:
 
 ;; TEXT EDITING
-(global-set-key (kbd "M-P") 'md/duplicate-up)
-(global-set-key (kbd "M-N") 'md/duplicate-down)
-(global-set-key (kbd "C-S-p") 'md-move-lines-up)
-(global-set-key (kbd "C-S-n") 'md/move-lines-down)
+(global-set-key (kbd "M-P") 'move-dup-duplicate-up)
+(global-set-key (kbd "M-N") 'move-dup-duplicate-down)
+(global-set-key (kbd "C-S-p") 'move-dup-move-lines-up)
+(global-set-key (kbd "C-S-n") 'move-dup-move-lines-down)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-x j") 'next-error)
 (global-set-key (kbd "\'") 'insert-pair)

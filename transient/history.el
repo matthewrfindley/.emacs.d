@@ -15,11 +15,14 @@
  (magit-log
   ("-n256" "--graph" "--decorate"))
  (magit-merge nil)
- (magit-push nil
-             ("--force-with-lease"))
- (magit-rebase nil
-               ("--interactive")
-               ("--preserve-merges"))
+ (magit-push
+  ("--force-with-lease")
+  nil)
+ (magit-rebase
+  ("--autostash")
+  nil
+  ("--interactive")
+  ("--preserve-merges"))
  (magit-remote
   ("-f"))
  (magit-remote\.<remote>\.*url "git@github.com:wsgr/p2-api.git" "git@github.com:wsgr/p2_api.git")
