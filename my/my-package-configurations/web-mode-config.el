@@ -1,6 +1,15 @@
 ;;; web-mode-config --- Summary
 ;;; Commentary:
 ;;; Code:
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((linum-mode)
+         (aj-javascript/set-prettier-command)
+         (typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
+
 (use-package web-mode
   :ensure t
   :config
@@ -11,6 +20,7 @@
     (set-node-modules-path)
     (flycheck-add-mode 'typescript-tide 'web-mode)
     (flycheck-mode)
+    (linum-mode)
     (company-mode)
     (tide-mode)
     (prettier-mode)
@@ -31,21 +41,20 @@
    'web-mode-hook 'my-web-mode-hook)
   )
 
-(define-derived-mode typescript-tsx-mode web-mode "TypeScript-tsx")
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
-(require 'flycheck)
-(require 'tide)
-(flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
+;; (define-derived-mode typescript-tsx-mode web-mode "TypeScript-tsx")
+;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
+;; (require 'flycheck)
+;; (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
 
-(add-hook
- 'typescript-tsx-mode-hook
- (lambda ()
-   (flycheck-add-mode 'typescript-tide 'typescript-tsx-mode)
-   (tide-setup)
-   (aj-javascript/set-prettier-command)
-   (flycheck-mode 1)
-   (eldoc-mode 1)
-   ))
+;; (add-hook
+;;  'typescript-tsx-mode-hook
+;;  (lambda ()
+;;    (flycheck-add-mode 'typescript-tide 'typescript-tsx-mode)
+;;    (tide-setup)
+;;    (aj-javascript/set-prettier-command)
+;;    (flycheck-mode 1)
+;;    (eldoc-mode 1)
+;;    ))
 
 
 (provide 'web-mode-config)
