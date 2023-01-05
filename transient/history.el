@@ -33,5 +33,6 @@
  (magit-stash nil
               ("--all")
               ("--include-untracked"))
+ (magit-status-jump nil)
  (magit-submodule nil)
  (magit-tag nil))
