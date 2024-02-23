@@ -7,8 +7,7 @@
   (defun my-sass-mode-hook ()
     (linum-mode)
     ;;;(eslint-set-closest-executable)
-    (set-node-modules-path)
-    (flycheck-mode))
+    (set-node-modules-path))
   (add-hook
    'sass-mode-hook 'my-sass-mode-hook)
   )

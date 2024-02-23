@@ -14,20 +14,20 @@
   (when-let ((executable (aj-javascript//locate-npm-executable "prettier")))
     (setq-local prettier-js-command executable)))
 
-(defun aj-ruby/rubocop-set-flycheck-executable ()
-  (interactive)
-  (let* ((dir (locate-dominating-file buffer-file-name "bin/rubocop"))
-         (executable (if dir
-                         (concat dir "bin/rubocop")
-                       (executable-find "rubocop"))))
-    (when executable
-      (setq-local flycheck-ruby-rubocop-executable executable))))
+;; (defun aj-ruby/rubocop-set-flycheck-executable ()
+;;   (interactive)
+;;   (let* ((dir (locate-dominating-file buffer-file-name "bin/rubocop"))
+;;          (executable (if dir
+;;                          (concat dir "bin/rubocop")
+;;                        (executable-find "rubocop"))))
+;;     (when executable
+;;       (setq-local flycheck-ruby-rubocop-executable executable))))
 
 (mapc
  'require
  '(magit-config
    dired-efap-config
-   flycheck-config
+   ;; flycheck-config
    smex-config
    wgrep-config
    simp-config
@@ -70,13 +70,13 @@
 ;;   (advice-add 'flycheck-checker-substituted-arguments :around
 ;;              'aj-javascript//flycheck-eslint-disable-prettier))
 
-(use-package flycheck-popup-tip
-    :ensure t
-    :defer t
-    :init
-    (progn
-      (setq flycheck-popup-tip-error-prefix "* ")
-      (add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)))
+;; (use-package flycheck-popup-tip
+;;     :ensure t
+;;     :defer t
+;;     :init
+;;     (progn
+;;       (setq flycheck-popup-tip-error-prefix "* ")
+;;       (add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)))
 
 (use-package markdown-mode
   :ensure t

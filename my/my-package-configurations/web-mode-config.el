@@ -1,14 +1,13 @@
 ;;; web-mode-config --- Summary
 ;;; Commentary:
 ;;; Code:
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck)
-  :hook ((linum-mode)
-         (aj-javascript/set-prettier-command)
-         (typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
+;; (use-package tide
+;;   :ensure t
+;;   :after (typescript-mode company flycheck)
+;;   :hook ((aj-javascript/set-prettier-command)
+;;          (typescript-mode . tide-setup)
+;;          (typescript-mode . tide-hl-identifier-mode)
+;;          (before-save . tide-format-before-save)))
 
 (use-package web-mode
   :ensure t
@@ -18,8 +17,7 @@
     ;;;(aj-javascript/set-eslint-executable)
     (aj-javascript/set-prettier-command)
     (set-node-modules-path)
-    (flycheck-add-mode 'typescript-tide 'web-mode)
-    (flycheck-mode)
+    ;; (flycheck-add-mode 'typescript-tide 'web-mode)
     (linum-mode)
     (company-mode)
     (tide-mode)
