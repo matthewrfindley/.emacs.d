@@ -5,7 +5,6 @@
   :ensure t
   :config
   (defun my-sass-mode-hook ()
-    (linum-mode)
     ;;;(eslint-set-closest-executable)
     (set-node-modules-path))
   (add-hook

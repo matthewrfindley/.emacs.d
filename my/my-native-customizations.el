@@ -16,6 +16,9 @@
  ;; Spaces instead of tabs
  '(indent-tabs-mode nil)
 
+ '(truncate-lines t)
+ '(global-display-line-numbers-mode 1)
+
  ;; IDO
  '(ido-mode t)
  '(ido-enable-flex-matching t)

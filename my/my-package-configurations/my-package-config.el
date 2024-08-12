@@ -141,8 +141,8 @@
 
 (use-package speeddating
   :config
-  ;; Tue Nov 02 2021
-  (add-to-list 'speeddating-formats "%a %b %d %Y")
+  ;; Tue Nov 2 2021
+  (add-to-list 'speeddating-formats "%a %b %-d %Y")
 
   ;; Tue, 2 Nov 2021
   (add-to-list 'speeddating-formats "%a, %-d %b %Y")
@@ -152,3 +152,9 @@
 
 (provide 'my-package-config)
 ;;; my-package-config.el ends here
+
+(use-package titlecase
+  :bind (("C-c C-t" . titlecase-dwim))
+
+  :init
+  (setq titlecase-style 'ap))

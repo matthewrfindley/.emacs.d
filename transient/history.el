@@ -25,7 +25,7 @@
   ("--preserve-merges"))
  (magit-remote
   ("-f"))
- (magit-remote\.<remote>\.*url "git@github.com:wsgr/p2-api.git" "git@github.com:wsgr/p2_api.git")
+ (magit-remote.<remote>.*url "git@github.com:wsgr/p2-api.git" "git@github.com:wsgr/p2_api.git")
  (magit-reset nil)
  (magit-revert
   ("--edit"))

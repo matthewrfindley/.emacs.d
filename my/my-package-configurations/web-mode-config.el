@@ -13,12 +13,10 @@
   :ensure t
   :config
   (defun my-web-mode-hook ()
-    (linum-mode)
     ;;;(aj-javascript/set-eslint-executable)
     (aj-javascript/set-prettier-command)
     (set-node-modules-path)
     ;; (flycheck-add-mode 'typescript-tide 'web-mode)
-    (linum-mode)
     (company-mode)
     (tide-mode)
     (prettier-mode)
