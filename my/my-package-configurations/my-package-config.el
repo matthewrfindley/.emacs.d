@@ -14,20 +14,10 @@
   (when-let ((executable (aj-javascript//locate-npm-executable "prettier")))
     (setq-local prettier-js-command executable)))
 
-;; (defun aj-ruby/rubocop-set-flycheck-executable ()
-;;   (interactive)
-;;   (let* ((dir (locate-dominating-file buffer-file-name "bin/rubocop"))
-;;          (executable (if dir
-;;                          (concat dir "bin/rubocop")
-;;                        (executable-find "rubocop"))))
-;;     (when executable
-;;       (setq-local flycheck-ruby-rubocop-executable executable))))
-
 (mapc
  'require
  '(magit-config
    dired-efap-config
-   ;; flycheck-config
    smex-config
    wgrep-config
    simp-config
@@ -43,43 +33,11 @@
    ruby-mode-config
    ))
 
-;; (use-package rubocop
-;;   :ensure t
-;;   :defer t
-;;   :init
-;;   (progn
-;;     (add-hook 'ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
-;;     (add-hook 'enh-ruby-mode-hook #'aj-ruby/rubocop-set-flycheck-executable)
-;;     (add-hook 'ruby-mode-hook #'rubocop-mode)
-;;     (add-hook 'enh-ruby-mode-hook #'rubocop-mode)))
-
 
 (use-package prettier
-  :ensure t
   :hook ((web-mode . prettier-mode)))
 
-;; eslintd-fix will fix any prettier errors so we don't want to see them in
-;; flycheck
-;; (defun aj-javascript//flycheck-eslint-disable-prettier (oldfun checker &rest args)
-;;   (let ((arguments (apply oldfun checker args)))
-;;     (if (eq checker 'javascript-eslint)
-;;         (cons "--rule=prettier/prettier:off" arguments)
-;;       arguments)))
-
-;; (with-eval-after-load 'flycheck
-;;   (advice-add 'flycheck-checker-substituted-arguments :around
-;;              'aj-javascript//flycheck-eslint-disable-prettier))
-
-;; (use-package flycheck-popup-tip
-;;     :ensure t
-;;     :defer t
-;;     :init
-;;     (progn
-;;       (setq flycheck-popup-tip-error-prefix "* ")
-;;       (add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)))
-
 (use-package markdown-mode
-  :ensure t
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
@@ -95,12 +53,9 @@
   :init (setq markdown-command "multimarkdown"))
 
 
-(use-package rainbow-mode
-  :ensure t
-  )
+(use-package rainbow-mode)
 
  (use-package go-mode
-    :ensure t
     :mode "\\*\\.go"
     :config
     (add-hook 'before-save-hook 'gofmt-before-save)
@@ -108,15 +63,12 @@
               (lambda ()
                 (linum-mode)))
     (use-package go-eldoc
-      :ensure t
       :config
       (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-    (use-package godoctor
-      :ensure t)
+    (use-package godoctor)
 
-    (use-package go-guru
-      :ensure t))
+    (use-package go-guru))
 
 
 (add-hook
@@ -150,11 +102,11 @@
   ;; 2021-11-02 Tue
   (add-to-list 'speeddating-formats "%Y-%m-%d %a"))
 
-(provide 'my-package-config)
-;;; my-package-config.el ends here
-
 (use-package titlecase
   :bind (("C-c C-t" . titlecase-dwim))
 
   :init
   (setq titlecase-style 'ap))
+
+(provide 'my-package-config)
+;;; my-package-config.el ends here

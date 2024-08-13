@@ -82,18 +82,6 @@ to the location of the selected bookmark."
   (let ((node-path (concat (simp-project-root) "/node_modules/.bin")))
     (setq-local exec-path (add-to-list 'exec-path node-path))))
 
-;; ESLINT
-;; (defun eslint-set-closest-executable (&optional dir)
-;;   (interactive)
-;;   (let* ((dir (or dir default-directory))
-;;          (eslint-executable (concat dir "/node_modules/.bin/eslint")))
-;;     (if (file-exists-p eslint-executable)
-;;         (progn
-;;           (make-variable-buffer-local 'flycheck-javascript-eslint-executable)
-;;           (setq flycheck-javascript-eslint-executable eslint-executable))
-;;       (if (string= dir "/") nil
-;;         (eslint-set-closest-executable (expand-file-name ".." dir))))))
-
 (defun indent-buffer ()
   "Fix indentation on the entire buffer."
   (interactive)
@@ -143,29 +131,6 @@ to the location of the selected bookmark."
   "Format XML using xmllint"
   (interactive)
   (shell-command-on-region (point-min) (point-max) "xmllint --format -" t t "*xmllint error*" t))
-
-;; (defun aj/eval-ruby ()
-;;   "Eval the current ruby file."
-;;   (interactive)
-;;   (when (buffer-file-name)
-;;     (let ((default-directory (projectile-project-root))
-;;           (process-environment (cons "RUBYOPT='-W:no-deprecated -W:no-experimental'" process-environment))
-;;           (command (format "ruby %s" (buffer-file-name)))
-;;           (compilation-scroll-output t)
-;;           (comint-prompt-read-only t))
-;;       (compilation-start command t))))
-;; (add-hook 'ruby-mode-hook
-;;           (map! :localleader
-;;                 :map ruby-mode-map
-;;                 :prefix ("e" . "eval")
-;;                 "e" #'aj/eval-ruby))
-
-;; (defun goto-matching-ruby-block (arg)
-;;   (cond   ;; are we at an end keyword?
-;;    ((equal (current-word) "end")    (ruby-beginning-of-block))   ;; or are we at a keyword itself?
-;;    ((string-match (current-word) "\\(for\\|while\\|until\\|if\\|class\\|module\\|case\\|unless\\|def\\|begin\\|do\\)")
-;;     (ruby-end-of-block)
-;;     )   )  )
 
 (defun aj/rename-current-file (newname)
     "Rename file visited by current buffer to NEWNAME.

@@ -7,8 +7,6 @@
  '(company-dabbrev-downcase nil)
  '(company-idle-delay 0.1)
  '(custom-file "~/.emacs.d/my/my-customize-variables.el")
- '(custom-safe-themes
-   '("0f76f9e0af168197f4798aba5c5ef18e07c926f4e7676b95f2a13771355ce850" default))
  '(dired-efap-initial-filename-selection nil)
  '(global-display-line-numbers-mode 1)
  '(ido-decorations
@@ -20,6 +18,8 @@
  '(ido-use-virtual-buffers t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(package-selected-packages
+   '(titlecase speeddating zenburn-theme wgrep web-mode smex simp sass-mode ruby-test-mode rainbow-mode prettier multiple-cursors multi-term move-dup modus-themes markdown-mode magit ido-completing-read+ go-mode enh-ruby-mode dired-efap company))
  '(recentf-save-file (expand-file-name ".recentf" temporary-file-directory))
  '(split-height-threshold nil)
  '(split-width-threshold 0)
