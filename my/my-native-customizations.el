@@ -6,6 +6,8 @@
  ;; Custom
  '(custom-file "~/.emacs.d/my/my-customize-variables.el")
 
+ '(visible-bell nil)
+
  ;; No startup screen
  '(inhibit-startup-message t)
 
