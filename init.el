@@ -24,6 +24,12 @@
    'require
    '(my-keybindings
      ))))
+
+(setq ruby-block-indent nil
+      ruby-method-call-indent nil
+      ruby-method-params-indent nil
+      ruby-after-operator-indent nil)
+
 ;;; init.el ends here
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)

@@ -22,13 +22,13 @@
  '(magit-completing-read-function 'ido-completing-read)
  '(magit-save-repository-buffers nil)
  '(magit-set-upstream-on-push 'askifnotset)
- '(package-selected-packages
-   '(wgrep web-mode titlecase speeddating smex simp sass-mode ruby-test-mode rainbow-mode prettier multiple-cursors multi-term move-dup modus-themes markdown-mode magit ido-completing-read+ go-mode enh-ruby-mode dired-efap company 0blayout))
+ '(multi-term-program "/bin/zsh")
  '(recentf-save-file (expand-file-name ".recentf" temporary-file-directory))
  '(smex-save-file (expand-file-name ".smex-items" temporary-file-directory))
  '(split-height-threshold nil)
  '(split-width-threshold 0)
  '(truncate-lines t)
+ '(visible-bell nil)
  '(wgrep-auto-save-buffer t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

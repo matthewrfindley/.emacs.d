@@ -2,12 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 (use-package ruby-test-mode
-  :ensure t
   :defer t
   :init
   (progn
     (add-hook 'ruby-mode-hook 'ruby-test-mode)
-    (add-hook 'enh-ruby-mode-hook 'ruby-test-mode)
+    ;; (add-hook 'enh-ruby-mode-hook 'ruby-test-mode)
     (setq ruby-test-rspec-options '()))
   :config
   (progn

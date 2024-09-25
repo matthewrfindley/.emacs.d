@@ -15,6 +15,10 @@
          ("M-j M-b" . simp-project-with-bookmark-ibuffer))
   :config
   (simp-project-define
+   '(:type environment
+           :has (.envrc)
+           :ignore (.git, log, public, temp, vendor)))
+  (simp-project-define
    '(:type rails
            :has (config.ru app/views app/models app/controllers)
            :ignore (.git, log, public, temp, vendor)))
