@@ -98,7 +98,6 @@ to the location of the selected bookmark."
          (relative-package-path (directory-file-name (file-name-directory (file-relative-name filename gopath-src-path)))))
     (setq go-guru-scope relative-package-path)))
 
-(setq aj-fixed-font-default-size 14)
 (defun aj/frame-font-size-increase ()
   "Increase the font size of the entire frame."
   (interactive)
@@ -110,13 +109,13 @@ to the location of the selected bookmark."
 (defun aj/frame-font-size-reset ()
   "Decrease the font size of the entire frame."
   (interactive)
-  (aj/frame-font-size-change (lambda (_x) aj-fixed-font-default-size)))
+  (aj/frame-font-size-change (lambda (_x) mf-fixed-font-default-size)))
  (defun presentation-mode ()
     "Increase the font size for presentation."
     (interactive)
     (aj/frame-font-size-change (lambda (x)
                                  (if (eq x 21)
-                                     aj-fixed-font-default-size
+                                     mf-fixed-font-default-size
                                    21))))
   (defun aj/frame-font-size-change (fn)
     "Change the font size of the frame."

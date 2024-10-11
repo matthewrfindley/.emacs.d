@@ -75,11 +75,7 @@ Only has effect when `ruby-use-smie' is t."
     (linum-mode 1)
     (aj-javascript/set-prettier-command)
     (prettier-mode 1)
-    )
-  (add-hook
-   'markdown-mode-hook 'my-markdown-hook)
-  :init (setq markdown-command "multimarkdown"))
-
+    ))
 
 (use-package rainbow-mode)
 

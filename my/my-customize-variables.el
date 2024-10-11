@@ -22,7 +22,8 @@
  '(magit-completing-read-function 'ido-completing-read)
  '(magit-save-repository-buffers nil)
  '(magit-set-upstream-on-push 'askifnotset)
- '(multi-term-program "/bin/zsh")
+ '(package-selected-packages
+   '(wgrep web-mode titlecase tide speeddating smex simp sass-mode ruby-test-mode rainbow-mode prettier multiple-cursors multi-term move-dup modus-themes markdown-mode magit ido-completing-read+ go-mode enh-ruby-mode dired-efap company 0blayout))
  '(recentf-save-file (expand-file-name ".recentf" temporary-file-directory))
  '(smex-save-file (expand-file-name ".smex-items" temporary-file-directory))
  '(split-height-threshold nil)
