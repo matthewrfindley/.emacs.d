@@ -10,7 +10,8 @@
  '(dired-efap-initial-filename-selection nil)
  '(global-display-line-numbers-mode 1)
  '(ido-decorations
-   '("\12>> " "" "\12   " "\12   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]"))
+   '("\12>> " "" "\12   " "\12   ..." "[" "]" " [No match]" " [Matched]"
+     " [Not readable]" " [Too big]" " [Confirm]"))
  '(ido-enable-flex-matching t)
  '(ido-mode t nil (ido))
  '(ido-use-filename-at-point 'guess)
@@ -18,12 +19,13 @@
  '(ido-use-virtual-buffers t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(magit-branch-read-upstream-first t)
- '(magit-completing-read-function 'ido-completing-read)
- '(magit-save-repository-buffers nil)
- '(magit-set-upstream-on-push 'askifnotset)
  '(package-selected-packages
-   '(wgrep web-mode titlecase tide speeddating smex simp sass-mode ruby-test-mode rainbow-mode prettier multiple-cursors multi-term move-dup modus-themes markdown-mode magit ido-completing-read+ go-mode enh-ruby-mode dired-efap company 0blayout))
+   '(0blayout company dired-efap enh-ruby-mode go-mode
+              ido-completing-read+ magit markdown-mode modus-themes
+              move-dup multi-term multiple-cursors prettier
+              rainbow-mode ruby-test-mode sass-mode simp smex
+              speeddating tide titlecase web-mode web-server websocket
+              wgrep))
  '(recentf-save-file (expand-file-name ".recentf" temporary-file-directory))
  '(smex-save-file (expand-file-name ".smex-items" temporary-file-directory))
  '(split-height-threshold nil)

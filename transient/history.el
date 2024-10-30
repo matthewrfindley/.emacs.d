@@ -6,6 +6,8 @@
   nil)
  (magit-commit nil
                ("--allow-empty")
+               ("--reuse-message=master")
+               ("--all")
                ("--no-verify"))
  (magit-diff
   ("--no-ext-diff" "--stat"))
@@ -29,6 +31,7 @@
  (magit-reset nil)
  (magit-revert
   ("--edit"))
+ (magit-revision-history "master")
  (magit-run nil)
  (magit-show-refs nil)
  (magit-stash nil
