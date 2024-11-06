@@ -3,34 +3,6 @@
 ;;; Code:
 ;;;(package-initialize)
 
-(let ((default-directory "~/.emacs.d/"))
-  (normal-top-level-add-subdirs-to-load-path))
-
-(mapc
- 'require
- '(my-native-customizations
-   my-native-keybindings
-   my-packages
-   my-functions
-   my-theme-customizations
-   my-hooks
-   my-backups
-   my-add-to-lists
-   my-advice
-   ))
-
-(add-hook 'after-init-hook '(lambda ()
-  (mapc
-   'require
-   '(my-keybindings
-     ))))
-
-(setq ruby-block-indent nil
-      ruby-method-call-indent nil
-      ruby-method-params-indent nil
-      ruby-after-operator-indent nil)
-
-;;; init.el ends here
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-(put 'set-goal-column 'disabled nil)
+(setenv "PATH" "/Users/matthew/.asdf/shims:/opt/homebrew/opt/asdf/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Applications/iTerm.app/Contents/Resources/utilities:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin/:/Users/matthew/.config/yarn/global/node_modules/.bin:#HOME/.config/yarn/global/node_modules/ios-deploy/build/Release:/Users/matthew/.subscript/bin:/Users/matthew/bin
+")
+(setq exec-path (split-string (getenv "PATH") path-separator))
