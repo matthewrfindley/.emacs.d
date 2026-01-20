@@ -44,7 +44,7 @@ Only has effect when `ruby-use-smie' is t."
    dired-efap-config
    smex-config
    wgrep-config
-   simp-config
+   rg-config
    ido-completing-read+-config
    multiple-cursors-config
    multi-term-config
