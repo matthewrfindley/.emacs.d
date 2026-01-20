@@ -1,4 +1,4 @@
-;;; my-native-customizations --- Summary
+;;; my-native-customizations --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

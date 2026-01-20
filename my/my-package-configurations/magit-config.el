@@ -1,4 +1,4 @@
-;;; magit-config --- Summary
+;;; magit-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package magit

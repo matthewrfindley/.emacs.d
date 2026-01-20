@@ -1,4 +1,4 @@
-;;; company-config --- Summary
+;;; company-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package ruby-test-mode

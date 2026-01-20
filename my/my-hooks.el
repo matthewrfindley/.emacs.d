@@ -1,4 +1,4 @@
-;; Before Save
+;; Before Save  -*- lexical-binding: t; -*-
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Company mode autocompletion

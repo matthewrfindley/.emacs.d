@@ -1,4 +1,4 @@
-;;; my-packages --- Summary
+;;; my-packages --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -8,11 +8,6 @@
     (if dir
         (concat dir node-module-path)
       (executable-find name))))
-
-(defun aj-javascript/set-prettier-command ()
-  (interactive)
-  (when-let ((executable (aj-javascript//locate-npm-executable "prettier")))
-    (setq-local prettier-js-command executable)))
 
 (defcustom ruby-bracketed-args-indent t
   "Non-nil to align the contents of bracketed arguments with the brackets.
@@ -61,10 +56,6 @@ Only has effect when `ruby-use-smie' is t."
    ruby-test-mode-config
    ))
 
-
-(use-package prettier
-  :hook ((web-mode . prettier-mode)))
-
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
@@ -73,34 +64,13 @@ Only has effect when `ruby-use-smie' is t."
   :config
   (defun my-markdown-hook ()
     (linum-mode 1)
-    (aj-javascript/set-prettier-command)
-    (prettier-mode 1)
     ))
 
 (use-package rainbow-mode)
 
- (use-package go-mode
-    :mode "\\*\\.go"
-    :config
-    (add-hook 'before-save-hook 'gofmt-before-save)
-    (add-hook 'go-mode-hook
-              (lambda ()
-                (linum-mode)))
-    (use-package go-eldoc
-      :config
-      (add-hook 'go-mode-hook 'go-eldoc-setup))
-
-    (use-package godoctor)
-
-    (use-package go-guru))
-
-
 (add-hook
  'typescript-mode-hook
  (lambda ()
-   (aj-javascript/set-prettier-command)
-   (prettier-mode 1)
-   (flycheck-mode 1)
    (tide-setup)
    (eldoc-mode 1)
    ))
@@ -108,10 +78,7 @@ Only has effect when `ruby-use-smie' is t."
 (add-hook
  'typescript-tsx-mode-hook
  (lambda ()
-   (aj-javascript/set-prettier-command)
-   (prettier-js-mode 1)
    (tide-setup)
-   (fly-checkmode 1)
    (eldoc-mode 1)
    ))
 

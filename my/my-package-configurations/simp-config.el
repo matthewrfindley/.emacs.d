@@ -1,4 +1,4 @@
-;;; simp-config --- Summary
+;;; simp-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package simp

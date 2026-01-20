@@ -1,9 +1,13 @@
-((magit-blame
-  ("-w"))
+((magit-bisect nil)
+ (magit-blame
+  ("-w")
+  ("-w" "-M" "-C")
+  ("-w" "-C"))
+ (magit-blame:-C)
+ (magit-blame:-M "-C")
  (magit-branch nil)
  (magit-cherry-pick
-  ("--ff")
-  nil)
+  ("--ff"))
  (magit-commit nil
                ("--allow-empty")
                ("--reuse-message=master")
@@ -12,6 +16,7 @@
  (magit-diff
   ("--no-ext-diff" "--stat"))
  (magit-dispatch nil)
+ (magit-ediff nil)
  (magit-fetch nil
               ("--prune"))
  (magit-gitignore nil)
@@ -23,6 +28,7 @@
  (magit-rebase
   ("--autostash")
   nil
+  ("--rebase-merges=no-rebase-cousins" "--autostash")
   ("--interactive")
   ("--preserve-merges"))
  (magit-remote
@@ -30,7 +36,8 @@
  (magit-remote.<remote>.*url "git@github.com:wsgr/p2-api.git" "git@github.com:wsgr/p2_api.git")
  (magit-reset nil)
  (magit-revert
-  ("--edit"))
+  ("--edit")
+  nil)
  (magit-revision-history "master")
  (magit-run nil)
  (magit-show-refs nil)
@@ -39,4 +46,5 @@
               ("--include-untracked"))
  (magit-status-jump nil)
  (magit-submodule nil)
- (magit-tag nil))
+ (magit-tag nil)
+ (transient:magit-rebase:--rebase-merges=))

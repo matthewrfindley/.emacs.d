@@ -1,4 +1,4 @@
-;;; my-packages --- Summary
+;;; my-packages --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (require 'package)

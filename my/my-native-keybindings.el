@@ -1,4 +1,4 @@
-;; GLOBAL
+;; GLOBAL  -*- lexical-binding: t; -*-
 (define-key key-translation-map "\C-j" "\C-x")
 (global-set-key (kbd "M-j") nil)
 

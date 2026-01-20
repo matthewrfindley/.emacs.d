@@ -1,4 +1,4 @@
-;;; init.el --- Summary
+;;; init.el --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;;;(package-initialize)
@@ -29,6 +29,8 @@
       ruby-method-call-indent nil
       ruby-method-params-indent nil
       ruby-after-operator-indent nil)
+
+(setq frame-inhibit-implied-resize t)
 
 ;;; init.el ends here
 (put 'upcase-region 'disabled nil)

@@ -1,4 +1,4 @@
-;; BUFFERS
+;; BUFFERS  -*- lexical-binding: t; -*-
 
 (defun kill-other-buffers ()
   "Kill all other buffers."

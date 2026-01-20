@@ -1,4 +1,4 @@
-;;; smex-config --- Summary
+;;; smex-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package smex

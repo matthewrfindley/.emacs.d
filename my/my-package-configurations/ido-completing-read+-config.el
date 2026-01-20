@@ -1,4 +1,4 @@
-;;; ido-completing-read+-config --- Summary
+;;; ido-completing-read+-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package ido-completing-read+

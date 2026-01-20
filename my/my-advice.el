@@ -1,4 +1,4 @@
-;;; WINDOW SPLITTING
+;;; WINDOW SPLITTING  -*- lexical-binding: t; -*-
 (defun balance-after (&rest args)
   (balance-windows))
 

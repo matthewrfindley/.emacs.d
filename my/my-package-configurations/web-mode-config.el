@@ -1,56 +1,63 @@
-;;; web-mode-config --- Summary
+;;; web-mode-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
+(use-package web-mode
+  :ensure t
+  :mode ("\\.tsx\\'" . web-mode)
+  :config
+  (setq web-mode-markup-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-enable-auto-quoting nil
+        web-mode-enable-auto-pairing t)
+  ;; Recognize TSX as JSX
+  (setq web-mode-content-types-alist '(("jsx" . "\\.tsx\\'"))))
+
+;; --- Tide Setup for TSX inside web-mode (no eslint, no prettier, no flycheck) ---
+(defun my/setup-tide-tsx ()
+  "Enable Tide only for TSX files using web-mode."
+  (when (and (string-equal "tsx" (file-name-extension (or buffer-file-name "")))
+             (derived-mode-p 'web-mode))
+    (tide-setup)
+    (tide-hl-identifier-mode +1) ;; highlight variable under cursor
+    (eldoc-mode +1)              ;; show function signatures
+    (company-mode +1)))          ;; autocomplete
+
+(use-package tide
+  :after (web-mode company)
+  :hook ((web-mode . my/setup-tide-tsx)
+         (before-save . tide-format-before-save))) ;; remove this line if you don't want formatting
+
+
 ;; (use-package tide
-;;   :ensure t
-;;   :after (typescript-mode company flycheck)
-;;   :hook ((aj-javascript/set-prettier-command)
-;;          (typescript-mode . tide-setup)
+;;   :after (typescript-mode company)
+;;   :hook ((typescript-mode . tide-setup)
 ;;          (typescript-mode . tide-hl-identifier-mode)
 ;;          (before-save . tide-format-before-save)))
 
-(use-package web-mode
-  :ensure t
-  :config
-  (defun my-web-mode-hook ()
-    ;;;(aj-javascript/set-eslint-executable)
-    (aj-javascript/set-prettier-command)
-    (set-node-modules-path)
-    ;; (flycheck-add-mode 'typescript-tide 'web-mode)
-    (company-mode)
-    (tide-mode)
-    (prettier-mode)
-    (custom-set-variables
-     ''(local-unset-key (kbd "M-j"))
-     '(web-mode-content-types-alist
-       '(("jsx" . "\\.js[x]?\\'")))
-     '(web-mode-markup-indent-offset 2)
-     '(web-mode-css-indent-offset 2)
-     '(web-mode-code-indent-offset 2)
-     '(web-mode-attr-indent-offset 2)
-     '(web-mode-attr-value-indent-offset 2)
-     '(web-mode-indentless-elements 2)
-     '(web-mode-markup-indent-offset 2)
-     '(web-mode-sql-indent-offset 2))
-    )
-  (add-hook
-   'web-mode-hook 'my-web-mode-hook)
-  )
-
-;; (define-derived-mode typescript-tsx-mode web-mode "TypeScript-tsx")
-;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
-;; (require 'flycheck)
-;; (flycheck-add-next-checker 'typescript-tide '(warning . javascript-eslint) 'append)
-
-;; (add-hook
-;;  'typescript-tsx-mode-hook
-;;  (lambda ()
-;;    (flycheck-add-mode 'typescript-tide 'typescript-tsx-mode)
-;;    (tide-setup)
-;;    (aj-javascript/set-prettier-command)
-;;    (flycheck-mode 1)
-;;    (eldoc-mode 1)
-;;    ))
+;; (use-package web-mode
+;;   :ensure t
+;;   :config
+;;   (defun my-web-mode-hook ()
+;;     (set-node-modules-path)
+;;     (company-mode 1)
+;;     (tide-mode 1)
+;;     (custom-set-variables
+;;      ''(local-unset-key (kbd "M-j"))
+;;      '(web-mode-content-types-alist
+;;        '(("jsx" . "\\.js[x]?\\'")))
+;;      '(web-mode-markup-indent-offset 2)
+;;      '(web-mode-css-indent-offset 2)
+;;      '(web-mode-code-indent-offset 2)
+;;      '(web-mode-attr-indent-offset 2)
+;;      '(web-mode-attr-value-indent-offset 2)
+;;      '(web-mode-indentless-elements 2)
+;;      '(web-mode-markup-indent-offset 2)
+;;      '(web-mode-sql-indent-offset 2))
+;;     )
+;;   (add-hook
+;;    'web-mode-hook 'my-web-mode-hook)
+;;   )
 
 
 (provide 'web-mode-config)

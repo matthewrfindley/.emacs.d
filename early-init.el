@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (setq mf-fixed-font "JetBrains Mono NL")
 (setq mf-fixed-font-default-size 16)
 

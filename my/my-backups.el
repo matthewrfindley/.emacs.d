@@ -1,4 +1,4 @@
-;; Don't pollute project directory
+;; Don't pollute project directory  -*- lexical-binding: t; -*-
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms

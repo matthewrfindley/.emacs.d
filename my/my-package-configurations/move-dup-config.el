@@ -1,4 +1,4 @@
-;;; move-dup-config --- Summary
+;;; move-dup-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package move-dup

@@ -1,4 +1,4 @@
-;;; multi-term-config --- Summary
+;;; multi-term-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package multi-term

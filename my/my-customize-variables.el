@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -19,13 +20,16 @@
  '(ido-use-virtual-buffers t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(magit-branch-read-upstream-first t)
+ '(magit-completing-read-function 'ido-completing-read)
+ '(magit-save-repository-buffers nil)
+ '(magit-set-upstream-on-push 'askifnotset)
  '(package-selected-packages
-   '(0blayout company dired-efap enh-ruby-mode go-mode
-              ido-completing-read+ magit markdown-mode modus-themes
-              move-dup multi-term multiple-cursors prettier
-              rainbow-mode ruby-test-mode sass-mode simp smex
-              speeddating tide titlecase web-mode web-server websocket
-              wgrep))
+   '(company dired-efap go-eldoc go-guru godoctor ido-completing-read+
+             magit markdown-mode modus-themes move-dup multi-term
+             multiple-cursors prettier rainbow-mode ruby-test-mode
+             sass-mode simp smex speeddating tide titlecase web-mode
+             wgrep))
  '(recentf-save-file (expand-file-name ".recentf" temporary-file-directory))
  '(smex-save-file (expand-file-name ".smex-items" temporary-file-directory))
  '(split-height-threshold nil)

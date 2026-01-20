@@ -1,4 +1,4 @@
-;;; my-theme-config --- Summary
+;;; my-theme-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package modus-themes

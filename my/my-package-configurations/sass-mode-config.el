@@ -1,4 +1,4 @@
-;;; sass-mode-config --- Summary
+;;; sass-mode-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package sass-mode

@@ -1,4 +1,4 @@
-;;; wgrep-config --- Summary
+;;; wgrep-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package wgrep

@@ -1,4 +1,4 @@
-;;; multiple-cursors-config --- Summary
+;;; multiple-cursors-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package multiple-cursors
