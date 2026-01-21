@@ -29,9 +29,10 @@
   :bind (("M-j c" . vterm-toggle)
          ("M-j C" . my/vterm-toggle-cd)
          ("M-j n" . my/vterm-new))
+  :init
+  (setq vterm-toggle-scope 'dedicated)
   :config
   (setq vterm-toggle-fullscreen-p nil)
-  (setq vterm-toggle-scope 'dedicated)
   (setq vterm-toggle-reset-window-configration-after-exit t)
   (add-to-list 'display-buffer-alist
                '((lambda (buffer-or-name _)

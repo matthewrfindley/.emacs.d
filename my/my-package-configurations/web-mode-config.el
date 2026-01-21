@@ -60,5 +60,16 @@
 ;;   )
 
 
+;; TypeScript mode hooks
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (tide-setup)
+            (eldoc-mode 1)))
+
+(add-hook 'typescript-tsx-mode-hook
+          (lambda ()
+            (tide-setup)
+            (eldoc-mode 1)))
+
 (provide 'web-mode-config)
 ;;; web-mode-config.el ends here
