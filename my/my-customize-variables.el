@@ -24,14 +24,8 @@
  '(magit-completing-read-function 'ido-completing-read)
  '(magit-save-repository-buffers nil)
  '(magit-set-upstream-on-push 'askifnotset)
- '(package-selected-packages
-   '(company dired-efap go-eldoc go-guru godoctor ido-completing-read+
-             magit markdown-mode modus-themes move-dup
-             multiple-cursors prettier rainbow-mode rg ruby-test-mode
-             sass-mode smex speeddating tide titlecase vterm
-             web-mode))
+ '(package-selected-packages nil)
  '(recentf-save-file (expand-file-name ".recentf" temporary-file-directory))
- '(smex-save-file (expand-file-name ".smex-items" temporary-file-directory))
  '(split-height-threshold nil)
  '(split-width-threshold 0)
  '(truncate-lines t)
