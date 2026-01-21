@@ -26,10 +26,9 @@
  '(magit-set-upstream-on-push 'askifnotset)
  '(package-selected-packages
    '(company dired-efap ido-completing-read+ magit markdown-mode
-     modus-themes move-dup multiple-cursors rainbow-mode rg
-     ruby-test-mode sass-mode smex speeddating tide titlecase
+     modus-themes move-dup multiple-cursors no-littering rainbow-mode
+     rg ruby-test-mode sass-mode smex speeddating tide titlecase
      vterm vterm-toggle web-mode wgrep))
- '(recentf-save-file (expand-file-name ".recentf" temporary-file-directory))
  '(split-height-threshold nil)
  '(split-width-threshold 0)
  '(truncate-lines t)

@@ -1,20 +1,16 @@
-/packages/archives/*
-/.mc-lists.el
-/url/cookies
-/elpa/archives/gnu/archive-contents
-/image-dired*
-/tramp
-/ac-comphist.dat
-/packages/*-readme.txt
-/.backups/
-/#!*
-/auto-save-list/*
-/ido.last
-/places
-/recentf
-/smex-items
+# no-littering directories
+/var/*
+/etc/*
+
+# Packages
 /elpa
-/ido.last~
+
+# Native compilation cache
 /eln-cache
-/org-persist
-/transient/*
+
+# Backups
+/.backups/
+
+# Package archives
+/packages/archives/*
+/packages/*-readme.txt

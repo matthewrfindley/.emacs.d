@@ -40,7 +40,8 @@ Only has effect when `ruby-use-smie' is t."
 
 (mapc
  'require
- '(magit-config
+ '(no-littering-config
+   magit-config
    dired-efap-config
    smex-config
    wgrep-config
