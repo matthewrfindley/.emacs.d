@@ -16,3 +16,5 @@
 /elpa
 /ido.last~
 /eln-cache
+/org-persist
+/transient/*
