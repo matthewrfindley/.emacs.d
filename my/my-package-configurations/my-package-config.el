@@ -47,7 +47,7 @@ Only has effect when `ruby-use-smie' is t."
    rg-config
    ido-completing-read+-config
    multiple-cursors-config
-   multi-term-config
+   vterm-config
    my-theme-config
    company-config
    web-mode-config
