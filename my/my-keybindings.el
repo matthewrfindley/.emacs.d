@@ -14,16 +14,11 @@
 (global-set-key (kbd "M-+") 'aj/frame-font-size-increase)
 (global-set-key (kbd "M--") 'aj/frame-font-size-decrease)
 
-;; (old meta-x)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
 ;; BUFFER SWITCHING
 (global-set-key (kbd "M-l") 'next-multiframe-window)
 (global-set-key (kbd "M-h") 'previous-multiframe-window)
 (global-set-key (kbd "C-S-b") 'bury-buffer)
 (global-set-key (kbd "C-S-f") 'unbury-buffer)
-
-(global-set-key (kbd "M-x") 'smex)
 
 ;; BUFFER Modification
 (global-set-key (kbd "C-?") 'revert-buffer)

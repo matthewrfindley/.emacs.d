@@ -8,27 +8,15 @@
  '(company-dabbrev-downcase nil)
  '(company-idle-delay 0.1)
  '(custom-file "~/.emacs.d/my/my-customize-variables.el")
- '(dired-efap-initial-filename-selection nil)
  '(global-display-line-numbers-mode 1)
- '(ido-decorations
-   '("\12>> " "" "\12   " "\12   ..." "[" "]" " [No match]" " [Matched]"
-     " [Not readable]" " [Too big]" " [Confirm]"))
- '(ido-enable-flex-matching t)
- '(ido-mode t nil (ido))
- '(ido-use-filename-at-point 'guess)
- '(ido-use-url-at-point t)
- '(ido-use-virtual-buffers t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(magit-branch-read-upstream-first t)
- '(magit-completing-read-function 'ido-completing-read)
- '(magit-save-repository-buffers nil)
- '(magit-set-upstream-on-push 'askifnotset)
  '(package-selected-packages
-   '(company dired-efap ido-completing-read+ magit markdown-mode
-     modus-themes move-dup multiple-cursors no-littering rainbow-mode
-     rg ruby-test-mode sass-mode smex speeddating tide titlecase
-     vterm vterm-toggle web-mode wgrep))
+   '(company consult dired-efap ido-completing-read+ magit marginalia
+             markdown-mode modus-themes move-dup multiple-cursors
+             no-littering orderless rainbow-mode rg ruby-test-mode
+             sass-mode smex speeddating tide titlecase vertico
+             vterm-toggle web-mode))
  '(split-height-threshold nil)
  '(split-width-threshold 0)
  '(truncate-lines t)

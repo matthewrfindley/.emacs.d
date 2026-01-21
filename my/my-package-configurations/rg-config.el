@@ -1,32 +1,19 @@
 ;;; rg-config --- Summary  -*- lexical-binding: t; -*-
 ;;; Commentary:
-;; rg.el for searching. All commands prompt for directory.
+;; Search and find files using consult + ripgrep/fd
 ;;; Code:
 
-(defun my/find-file-in-dir (dir)
-  "Find file in DIR using fd and completing-read."
-  (interactive "DDirectory: ")
-  (let* ((default-directory dir)
-         (cmd "fd --type f --hidden --exclude .git")
-         (files (split-string (shell-command-to-string cmd) "\n" t))
-         (file (completing-read "File: " files nil t)))
-    (find-file (expand-file-name file dir))))
+(defun my/consult-ripgrep-at-point ()
+  "Search for thing at point using consult-ripgrep."
+  (interactive)
+  (consult-ripgrep nil (thing-at-point 'symbol t)))
 
-(defun my/rg-thing-at-point (dir)
-  "Search for thing at point in DIR using rg."
-  (interactive "DDirectory: ")
-  (let ((thing (thing-at-point 'symbol t)))
-    (if thing
-        (rg thing "*" dir)
-      (call-interactively 'rg))))
-
-(use-package rg
-  :ensure t
-  :bind (("M-j s" . rg)
-         ("M-j S" . my/rg-thing-at-point)
-         ("M-j f" . my/find-file-in-dir)
+(use-package consult
+  :bind (("M-j s" . consult-ripgrep)
+         ("M-j S" . my/consult-ripgrep-at-point)
+         ("M-j f" . consult-fd)
          ("M-j d" . dired)
-         ("M-j b" . ibuffer)
+         ("M-j b" . consult-buffer)
          ("M-j B" . ibuffer)))
 
 (provide 'rg-config)

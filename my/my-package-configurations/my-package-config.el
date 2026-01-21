@@ -6,12 +6,11 @@
 (mapc
  'require
  '(no-littering-config
+   vertico-config
    magit-config
    dired-efap-config
-   smex-config
    wgrep-config
    rg-config
-   ido-completing-read+-config
    multiple-cursors-config
    vterm-config
    my-theme-config

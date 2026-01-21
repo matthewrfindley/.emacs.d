@@ -21,19 +21,6 @@
  '(truncate-lines t)
  '(global-display-line-numbers-mode 1)
 
- ;; IDO
- '(ido-mode t)
- '(ido-enable-flex-matching t)
- '(ido-use-virtual-buffers t)
- '(ido-use-filename-at-point (quote guess))
- '(ido-use-url-at-point t)
- '(ido-decorations
-   (quote
-    ("
->> " "" "
-   " "
-   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-
  ;; BOOKMARKS
  '(bookmark-default-file "~/.emacs.d/my/my-bookmarks.el")
  )
