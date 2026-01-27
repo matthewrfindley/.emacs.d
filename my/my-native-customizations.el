@@ -15,8 +15,10 @@
  '(split-height-threshold nil)
  '(split-width-threshold 0)
 
- ;; Spaces instead of tabs
+ ;; Indentation: spaces, 2-wide
  '(indent-tabs-mode nil)
+ '(tab-width 2)
+ '(smie-indent-basic 2)
 
  '(truncate-lines t)
  '(global-display-line-numbers-mode 1)
