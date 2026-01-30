@@ -12,13 +12,15 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(company consult dired-efap ido-completing-read+ magit marginalia
-             markdown-mode modus-themes move-dup multiple-cursors
-             no-littering orderless rainbow-mode rg ruby-test-mode
-             sass-mode smex speeddating tide titlecase vertico
-             vterm-toggle web-mode))
+   '(company dired-efap embark-consult ido-completing-read+ magit
+             marginalia markdown-mode modus-themes move-dup
+             multiple-cursors no-littering orderless rainbow-mode rg
+             ruby-test-mode sass-mode smex speeddating tide titlecase
+             vertico vterm-toggle web-mode yasnippet))
+ '(smie-indent-basic 2)
  '(split-height-threshold nil)
  '(split-width-threshold 0)
+ '(tab-width 2)
  '(truncate-lines t)
  '(visible-bell nil)
  '(wgrep-auto-save-buffer t))

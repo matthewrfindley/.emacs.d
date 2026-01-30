@@ -24,6 +24,7 @@
    rainbow-mode-config
    speeddating-config
    titlecase-config
+   yasnippet-config
    ))
 
 (provide 'my-package-config)

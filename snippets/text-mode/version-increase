@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: version-increase
+# key: vi
+# --
+${1:`(if-let* ((files (shell-command-to-string "git diff --cached --name-only | grep -E '\\.gemspec$'"))
+          (match (string-match "^\\([^/]+\\)/[^/]+\\.gemspec$" files))
+          (dir (match-string 1 files)))
+    (concat (if (string= dir "http") "HTTP" (capitalize dir)) " package")
+  "Package")`} version is increased from ${2:`(shell-command-to-string "git diff --cached --word-diff | sed -n -E 's/^.*version.*\\[-\"([[:digit:]\\.]+)\".*/\\1/p' | tr -d '\\n'")`} to ${3:`(shell-command-to-string "git diff --cached --word-diff | sed -n -E -e 's/^.*version.*\\{\\+\"([[:digit:]\\.]+)\".*/\\1/p' | tr -d '\\n'")`}
