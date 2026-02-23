@@ -21,6 +21,7 @@
    ruby-config
    ruby-test-mode-config
    markdown-mode-config
+   flyspell-config
    rainbow-mode-config
    speeddating-config
    titlecase-config
