@@ -25,6 +25,9 @@
 
  ;; BOOKMARKS
  '(bookmark-default-file "~/.emacs.d/my/my-bookmarks.el")
+
+ ;; Use native image conversion instead of ImageMagick
+ '(image-use-external-converter t)
  )
 
 ;; Remove scrollbars, menu bars, and toolbars
@@ -44,6 +47,10 @@
 
 (delete-selection-mode 1)
 (electric-pair-mode t)
+
+;; Disable ImageMagick; use native image support
+(setq imagemagick-enabled-types nil)
+(add-to-list 'image-type-file-name-regexps '("\\.svg\\'" . svg))
 
 (provide 'my-native-customizations)
 ;;; my-native-customizations.el ends here
