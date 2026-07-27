@@ -11,12 +11,7 @@
  '(global-display-line-numbers-mode 1)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(package-selected-packages
-   '(company dired-efap embark-consult ido-completing-read+ magit
-             marginalia markdown-mode modus-themes move-dup
-             multiple-cursors no-littering orderless rainbow-mode rg
-             ruby-test-mode sass-mode smex speeddating tide titlecase
-             vertico vterm-toggle web-mode yasnippet))
+ '(package-selected-packages nil)
  '(smie-indent-basic 2)
  '(split-height-threshold nil)
  '(split-width-threshold 0)
