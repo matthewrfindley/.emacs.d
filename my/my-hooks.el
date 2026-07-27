@@ -8,7 +8,8 @@
  'dired-mode-hook
  (lambda ()
    (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
-   (define-key dired-mode-map (kbd "e") 'dired-efap)))
+   (define-key dired-mode-map (kbd "e") 'dired-efap)
+   (define-key dired-mode-map (kbd "W") 'mf/dired-copy-full-path)))
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 

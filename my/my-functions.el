@@ -151,4 +151,10 @@ If NEWNAME is a directory then extend it with the basename of
     ;; confirmation before overwriting. Why? Who can say...
     (dired-rename-file buffer-file-name newname 0))
 
+(defun mf/dired-copy-full-path ()
+  "Copy the absolute path of the file at point, or of the marked
+files, to the kill ring."
+  (interactive)
+  (dired-copy-filename-as-kill 0))
+
 (provide 'my-functions)
