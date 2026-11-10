@@ -26,5 +26,10 @@
 
 (global-set-key (kbd "C-x C-d") 'dired-jump)
 
+;; LOGGING
+(global-set-key (kbd "C-c !") 'mf/insert-log-date)
+(global-set-key (kbd "C-c C--") 'mf/insert-comment-attribution)
+(global-set-key (kbd "C-c #") 'mf/update-log-date-anchor)
+
 (provide 'my-keybindings)
 ;;; my-keybindings.el ends here

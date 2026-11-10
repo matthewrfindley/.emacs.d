@@ -52,5 +52,12 @@
 (setq imagemagick-enabled-types nil)
 (add-to-list 'image-type-file-name-regexps '("\\.svg\\'" . svg))
 
+;; mise shims: resolve tool versions (node, etc.) per-project directory,
+;; falling back to the global/system install when no mise config applies.
+(let ((mise-shims (expand-file-name "~/.local/share/mise/shims")))
+  (when (file-directory-p mise-shims)
+    (add-to-list 'exec-path mise-shims)
+    (setenv "PATH" (concat mise-shims path-separator (getenv "PATH")))))
+
 (provide 'my-native-customizations)
 ;;; my-native-customizations.el ends here
